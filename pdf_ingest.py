@@ -36,7 +36,8 @@ def _clean_text_block(block: dict[str, Any], section: str) -> tuple[str, bool]:
         text = "".join(span.get("text", "") for span in spans).rstrip()
         if not text.strip():
             continue
-        if text.strip() in {"Fortinet Inc.", "FortiAnalyzer 7.0.0 Administration Guide"}:
+        normalized_text = text.strip().casefold()
+        if normalized_text.endswith(("net inc.", "lyzer 7.0.0 administration guide")):
             continue
         if text.strip() == section and block["bbox"][1] < 110:
             continue

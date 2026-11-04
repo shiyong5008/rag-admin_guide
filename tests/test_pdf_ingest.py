@@ -1,6 +1,23 @@
 import unittest
 
-from pdf_ingest import chunk_elements
+from pdf_ingest import _clean_text_block, chunk_elements
+
+
+class CleanTextBlockTests(unittest.TestCase):
+    def test_skips_lines_matching_known_footer_suffixes(self) -> None:
+        block = {
+            "bbox": (0, 0, 100, 100),
+            "lines": [
+                {"spans": [{"text": "Updated Vendor net Inc."}]},
+                {"spans": [{"text": "Product Analyzer 7.0.0 Administration Guide"}]},
+                {"spans": [{"text": "Keep this text."}]},
+            ],
+        }
+
+        text, is_code = _clean_text_block(block, "Document")
+
+        self.assertEqual(text, "Keep this text.")
+        self.assertFalse(is_code)
 
 
 class ChunkElementsTests(unittest.TestCase):

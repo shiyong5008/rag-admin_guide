@@ -40,7 +40,7 @@ def answer_question(
             image_parts.append(_image_part(str(image_path)))
 
     prompt = (
-        "Answer using only the supplied FortiAnalyzer 7.0.0 manual excerpts and images. "
+        "Answer using only the supplied Administration_Guide excerpts and images. "
         "Reply in the user's language. Preserve CLI commands exactly. Cite each factual claim "
         "with the source label, for example [Source 2, PDF p. 42]. If the evidence does not "
         "answer the question, say that the manual excerpts do not establish the answer.\n\n"
