@@ -17,7 +17,7 @@ The PDF is parsed locally; its text chunks are sent to Gemini to create embeddin
 
 1. The question is sent to the Gemini Embedding API to create a query vector.
 2. The app compares that vector with the stored vectors locally and selects the five closest chunks.
-3. The question and selected excerpts are sent to the Gemini generation model (default: `gemini-2.5-flash`) to produce an answer with source/page citations.
+3. The question and selected excerpts are sent to the Gemini generation model (default: `gemini-3.5-flash-lite`) to produce an answer with source/page citations.
 4. If retrieved chunks have associated images, up to two images are also sent to Gemini. Images remain in the Codespace otherwise.
 
 Each question uses the Gemini API for its query embedding and generated answer. The chunk search itself is local.
