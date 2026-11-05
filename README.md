@@ -2,6 +2,8 @@
 
 A Streamlit application for searching and asking questions about the Administration Guide PDF. It uses Gemini to create embeddings and generate grounded answers, while PDF parsing, vector storage, and similarity search run locally in the Codespace.
 
+![Application screenshot](gui.jpg)
+
 ## How it works
 
 ### Build the index
@@ -63,6 +65,14 @@ Python 3.11 or newer is recommended.
 The API key is loaded by the Streamlit server from `.env`; it is not shown as a browser input. Restart the app after changing `.env`. Never commit `.env` or your API key. The PDF, extracted images, and generated index are also local and ignored by Git.
 
 Gemini API quotas, rate limits, availability, and pricing depend on your project and selected models. Check the current Gemini API rate limits and pricing before indexing or changing models.
+
+## Future improvements
+
+- Create more evaluation set of representative questions with expected answers and source pages; measure retrieval relevance, answer grounding, and citation accuracy.
+- Improve chunking for long code blocks by splitting at logical command or configuration boundaries while keeping statements intact.
+- Improve retrieval with relevance thresholds, adjacent-context expansion, and keyword matching for exact CLI commands and configuration names.
+- Refine answer generation to lead with a direct answer, include only necessary details, and clearly state when the retrieved evidence is insufficient.
+- Experiment with LangChain for document processing and retrieval, comparing quality, latency, and complexity against the current implementation using the same evaluation set.
 
 ## Tests
 
